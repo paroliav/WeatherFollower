@@ -49,9 +49,6 @@ public class FollowerTest {
         List<Map<String, Object>> epoch_weather = weathers.stream()
                       .filter(weather -> weather.get("dt").toString().equals(nextThursdayAsEpoch()))
                       .collect(Collectors.toList());
-
-        ObjectMapper oMapper = new ObjectMapper();
-        Map<String, Float> weather_main;
         epoch_weather.stream().map(map -> map.get("main"))
                               .forEach(obj -> assertTrue(getMinTemperature(obj) > 10.0));
 
