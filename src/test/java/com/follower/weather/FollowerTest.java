@@ -46,12 +46,10 @@ public class FollowerTest {
     public void testNextThursdayIsWarmerThan10Deegrees() {
         Response response = RestAssured.get("forecast?q=Sydney&cnt=40&units=metric&appid=e31e96ba2778a85558cf36c96cb38838");
         List<Map<String, Object>> weathers = response.jsonPath().getList("list");
-        List<Map<String, Object>> epoch_weather = weathers.stream()
-                      .filter(weather -> weather.get("dt").toString().equals(nextThursdayAsEpoch()))
-                      .collect(Collectors.toList());
-        epoch_weather.stream().map(map -> map.get("main"))
-                              .forEach(obj -> assertTrue(getMinTemperature(obj) > 10.0));
-
+        weathers.stream()
+                .filter(weather -> weather.get("dt").toString().equals(nextThursdayAsEpoch()))
+                .map(map -> map.get("main"))
+                .forEach(obj -> assertTrue(getMinTemperature(obj) > 10.0));
     }
 
     private Double getMinTemperature(Object obj){
