@@ -2,7 +2,7 @@
 
 ## Project Specifications
 
-This projects connects to the Open Weather REST APIs to check weather for next Thursday
+This project connects to the Open Weather REST APIs to check weather for next Thursday
 - Contains a single test file ```FollowerTest.java``` which is located inside the ```test``` folder 
 
 ## Setup for the project
